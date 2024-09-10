@@ -3,6 +3,7 @@
 function that adds two numbers
 """
 
+
 def add_integer(a, b=98):
     """Function that add two integer or float numbers
 
