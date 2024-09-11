@@ -1,27 +1,27 @@
 #!/usr/bin/python3
 """
 This module provides a function to divide all elements of a matrix
-by a given divisor
+by a given divisor.
 """
 
 
 def matrix_divided(matrix, div):
     """
-    Divide all elements of a matrix by a given divisor
+    Divides all elements of a matrix by a given divisor.
 
     Args:
         matrix: A list of lists of integers or floats
-        div: The divisor, which must be a number (integer or float)
+        div: The divisor, which must be a number (integer or float).
 
     Returns:
         A new matrix with all elements divided by div, rounded to 2 decimal
-        places
+        places.
 
     Raises:
-        TypeError: If the matrix elements are not lists of integers or floats
-        TypeError: If each row of the matrix is not of the same size
-        TypeError: If div is not a number (integer or float)
-        ZeroDivisionError: If div is zero
+        TypeError: If the matrix elements are not lists of integers or floats.
+        TypeError: If each row of the matrix is not of the same size.
+        TypeError: If div is not a number (integer or float).
+        ZeroDivisionError: If div is zero.
     """
 
     if (not isinstance(matrix, list) or not all(isinstance(row, list)
