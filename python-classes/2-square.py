@@ -13,7 +13,7 @@ class Square:
         Initializes the square with an optional size (the default is 0).
 
         Arguments:
-            size (int): The size of the side of the square (must be a positive integer or zero).
+            size (int): The size of the side of the square.
 
         Errors:
             TypeError: Raised if size is not an integer.
