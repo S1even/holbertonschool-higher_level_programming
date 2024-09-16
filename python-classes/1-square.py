@@ -6,7 +6,7 @@ This module defines a simple Square class.
 
 class Square:
     """
-    This class represents a geiletric square.
+    This class represents a geometric square.
 
     """
     def __init__(self, size):
