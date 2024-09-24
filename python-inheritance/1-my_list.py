@@ -10,7 +10,7 @@ class MyList(list):
     """
     def print_sorted(self):
         """
-    Method that displays the sorted list,
+        Method that displays the sorted list,
         without modifying the original list.
         """
         print(sorted(self))
