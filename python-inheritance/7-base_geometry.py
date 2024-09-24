@@ -2,7 +2,7 @@
 """Module that defines a class BaseGeometry"""
 
 
-class BaseGeometry:
+class BaseGeometry():
     """
     BaseGeometry class.
     """
