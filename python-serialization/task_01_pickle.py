@@ -11,17 +11,23 @@ class CustomObject:
 
     def display(self):
         """Display object's attributes"""
-        print(f"name: {self.name}")
-        print(f"age: {self.age}")
-        print(f"is_student: {self.is_student}")
+        print("Name: {}".format(self.name))
+        print("Age: {}".format(self.age))
+        print("Is Student: {}".format(self.is_student))
 
     def serialize(self, filename):
         """Serialize the object to a file"""
-        with open(filename, 'wb') as f:
-            pickle.dump(self, f)
+        try:
+            with open(filename, 'wb') as f:
+                pickle.dump(self, f)
+        except Exception:
+            return
 
     @classmethod
     def deserialize(cls, filename):
         """Deserialize an object from a file"""
-        with open(filename, 'rb') as f:
-            return pickle.load(f)
+        try:
+            with open(filename, 'rb') as f:
+                return pickle.load(f)
+        except Exception as e:
+            return None
