@@ -32,6 +32,6 @@ def load_and_deserialize(filename):
         with open(filename, 'r') as file:
             data = json.load(file)
             return data
-        except Exception as e:
-            print(f"An error occurred while reading from the file: {e}")
-            return None
+    except Exception as e:
+        print(f"An error occurred while reading from the file: {e}")
+        return None
