@@ -8,7 +8,7 @@ import json
 def serialize_and_save_to_file(data, filename):
     """function that serialize and save data"""
     with open(filename, 'w') as json_file:
-        pickle.dump(data, json_file)
+        json.dump(data, json_file)
 
 
 def load_and_deserialize(filename):
