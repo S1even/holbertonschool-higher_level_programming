@@ -9,6 +9,9 @@ from flask_jwt_extended.exceptions import NoAuthorizationError, InvalidHeaderErr
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
+
 auth = HTTPBasicAuth()
 jwt = JWTManager(app)
 
@@ -20,30 +23,29 @@ users = {
 
 @auth.verify_password
 def verify_password(username, password):
-    if username in users and \
-            check_password_hash(users.get(username)["password"], password):
-        return users.get(username)
-    return None
+    user = users.get(username)
+    if user and check_password_hash(user['password'], password):
+        return user
     
-@app.route("/basic-protected", methods=["GET"])
+@app.route("/basic-protected", methods=['POST'])
 @auth.login_required
 def basic_protected():
     return "Basic Auth: Access Granted"
 
-@app.route("/login", methods=["POST"])
+@app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    username = request.json.get("username")
-    password = request.json.get("password")
-
-    if users and check_password_hash(users.get(username)['password'], password):
-        access_token = create_access_token(identity={"username": username, "role": users.get(username)['role']})
+    username = data.get('username')
+    password = data.get('password')
+    user = users.get(username)
+    if user and check_password_hash(user['password'], password):
+        access_token = create_access_token(identity={"username": username, "role": user['role']})
         return jsonify(access_token=access_token)
-    return jsonify({'error': "data invalid"}), 401
+    return jsonify({"error": "Invalid credentials"}), 401
 
 @app.route("/jwt-protected")
 @jwt_required()
-def protected():
+def jwt_protected():
     return "JWT Auth: Access Granted"
 
 @app.route("/admin-only")
