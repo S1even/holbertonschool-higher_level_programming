@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    results = cursor.fetchall()
+    rows = cursor.fetchall()
 
     for row in rows:
         print(row)
