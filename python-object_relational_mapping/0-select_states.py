@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+
 """ Lists all states from the database """
 
 import MySQLdb
 import sys
+
 
 if __name__ == "__main__":
     db = MySQLdb.connect(
@@ -19,7 +21,7 @@ if __name__ == "__main__":
 
     results = cursor.fetchall()
 
-    for row in results:
+    for row in rows:
         print(row)
 
     cursor.close()
