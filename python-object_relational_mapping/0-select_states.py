@@ -4,12 +4,13 @@ lists all table values
 parameters given to script: username, password, database
 """
 
-import sys
+
 import MySQLdb
+import sys
 
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(
+    connection = MySQLdb.connect(
         host='localhost',
         port=3306,
         user=sys.argv[1],
@@ -17,7 +18,7 @@ if __name__ == "__main__":
         db=sys.argv[3]
     )
 
-    cursor = db.cursor()
+    cursor = connection.cursor()
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
     rows = cursor.fetchall()
 
@@ -25,4 +26,4 @@ if __name__ == "__main__":
         print(row)
 
     cursor.close()
-    db.close()
+    connection.close
